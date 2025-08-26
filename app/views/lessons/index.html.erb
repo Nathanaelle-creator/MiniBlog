@@ -1,0 +1,84 @@
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  width: calc((100% / 3) - 13.33px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+
+  .card h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+    color: #222;
+  }
+
+  .card p {
+    color: #666;
+    margin-bottom: 15px;
+  }
+
+  .card a.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+
+  .card a.btn:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div class="container">
+  <h1>📘 Anglais</h1>
+
+  <div class="cards">
+    <% @lessons.each do |lesson| %>
+      <div class="card">
+        <h3><%= lesson.source %> - <em>(<%= lesson.language.capitalize %>)</em></h3>
+        <p><strong><%= lesson.quote %></strong></p>
+        <p>Traduction : <em><%= lesson.translation %></em></p>
+        <%= link_to "Voir plus", lesson_path(lesson), class: "btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

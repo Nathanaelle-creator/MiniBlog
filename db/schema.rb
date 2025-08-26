@@ -10,11 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_26_151419) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_26_193031) do
   create_table "blagues", force: :cascade do |t|
     t.string "nom"
     t.string "contenu"
     t.string "auteur"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "language"
+    t.string "quote"
+    t.string "translation"
+    t.string "source"
+    t.text "explanation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
