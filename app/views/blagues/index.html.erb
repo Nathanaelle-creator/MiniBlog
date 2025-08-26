@@ -1,0 +1,7 @@
+<div>Hello, Liste des blagues :</div>
+
+<% @blague.each do |blague| %>
+  <p><strong><%= blague.nom %></strong></p>
+  <p><em>- <%= blague.auteur %></em></p>
+  <div> <%= link_to 'Voir',blague_path(blague) %></div>
+<% end %>
