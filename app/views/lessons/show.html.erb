@@ -1,0 +1,190 @@
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #5e6fa3;
+margin: 0;
+padding: 0;
+}
+
+.container {
+max-width: 960px;
+margin: 0 auto;
+padding: 40px 20px;
+text-align: center;
+}
+
+h1 {
+font-size: 2.5em;
+margin-bottom: 10px;
+color: #ffc2a1;
+}
+
+hr {
+border: none;
+border-top: 1px solid #b0dfe8;
+margin: 40px 0;
+}
+
+.card {
+background: #ffffff;
+border: 1px solid #b0dfe8;
+border-radius: 12px;
+padding: 20px;
+max-width: 500px;
+margin: 0 auto 40px auto;
+box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+text-align: left;
+}
+
+.card h3 {
+margin-top: 0;
+font-size: 1.5em;
+color: #457b9d;
+}
+
+.card p {
+color: #1c3b64;
+font-size: 1.1em;
+margin-bottom: 15px;
+}
+
+.quote-image {
+display: flex;
+justify-content: center;
+margin: 20px 0;
+}
+
+.quote-image img {
+width: 120px;
+height: 120px;
+border-radius: 50%;
+object-fit: cover;
+border: 3px solid #ff1744;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h2 {
+color: #ffc2a1;
+margin-bottom: 20px;
+}
+
+form#quiz-form {
+margin-top: 20px;
+}
+
+#answer {
+padding: 10px;
+width: 60%;
+max-width: 350px;
+border-radius: 6px;
+border: 1px solid #b0dfe8;
+font-size: 1em;
+}
+
+#quiz-form button {
+padding: 10px 20px;
+background-color: #007bff;
+color: white;
+border: none;
+border-radius: 6px;
+font-weight: bold;
+margin-left: 10px;
+cursor: pointer;
+transition: background-color 0.2s ease;
+}
+
+#quiz-form button:hover {
+background-color: #c4001d;
+}
+
+#feedback {
+margin-top: 20px;
+font-weight: bold;
+font-size: 1.1em;
+}
+
+.nav-buttons {
+display: flex;
+justify-content: center;
+gap: 20px;
+margin-top: 40px;
+}
+
+.nav-buttons a {
+padding: 10px 24px;
+background-color: #007bff;
+color: white;
+text-decoration: none;
+border-radius: 6px;
+font-weight: bold;
+transition: background-color 0.2s ease;
+}
+
+.nav-buttons a:hover {
+background-color: #c4001d;
+}
+</style>
+
+
+<div class="container">
+<h1>📘 Quizz</h1>
+
+<div class="card">
+<h3><%= @lesson.source %> - <em>(<%= @lesson.language.capitalize %>)</em></h3>
+
+
+<div class="quote-image">
+<img src="<%= @lesson.image %>" alt="Illustration de la citation" />
+</div>
+
+<p><strong>Phrase :</strong> <%= @lesson.quote %></p>
+</div>
+
+<hr>
+
+<h2>Quiz rapide</h2>
+<p>Quelle est la traduction de cette phrase ?</p>
+<p><em>"<%= @lesson.quote %>"</em></p>
+
+<form id="quiz-form">
+<input type="text" id="answer" placeholder="Ta réponse ici" autocomplete="off" />
+<button type="submit">Valider</button>
+</form>
+
+<p id="feedback"></p>
+
+<div class="nav-buttons">
+<% if @previous_lesson %>
+<%= link_to "← Leçon précédente", lesson_path(@previous_lesson), class: "btn-nav" %>
+<% end %>
+
+<%= link_to "↩ Retour à la liste", lessons_path, class: "btn-nav" %>
+
+<% if @next_lesson %>
+<%= link_to "Leçon suivante →", lesson_path(@next_lesson), class: "btn-nav" %>
+<% end %>
+</div>
+</div>
+
+<script>
+document.getElementById('quiz-form').addEventListener('submit', function(e) {
+e.preventDefault();
+const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
+const correctAnswer = "<%= j @lesson.translation.downcase %>";
+const feedback = document.getElementById('feedback');
+
+if (!userAnswer) {
+feedback.textContent = "Merci d’entrer une réponse.";
+feedback.style.color = "orange";
+return;
+}
+
+if (userAnswer === correctAnswer) {
+feedback.textContent = " Bravo, c’est la bonne réponse !";
+feedback.style.color = "green";
+} else {
+feedback.textContent = ` Oups, la bonne réponse est : "${correctAnswer}"`;
+feedback.style.color = "red";
+}
+});
+</script>

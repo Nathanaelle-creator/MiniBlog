@@ -1,0 +1,74 @@
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #5e6fa3;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 30px 40px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.2em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+p {
+    font-size: 1.15em;
+    color: #444;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+em {
+    color: #666;
+    font-size: 1em;
+}
+
+
+a.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    margin-top: 20px;
+}
+
+a.btn:hover {
+    background-color: #0056b3;
+}
+</style>
+
+<div class="container">
+<h1>📢 Détail de la blague</h1>
+
+<h1>Titre de la blague : <%= @blague.nom %></h1>
+
+<h3>Contenu de la blague :</h3>
+<p><%= @blague.contenu %></p>
+
+<em>Auteur de la blague : <%= @blague.auteur %></em>
+
+<div>
+    <%= link_to "← Retour à la liste", blagues_path, class: "btn" %>
+</div>
+</div>
