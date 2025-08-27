@@ -47,6 +47,22 @@ font-size: 1.1em;
 margin-bottom: 15px;
 }
 
+
+.quote-image {
+display: flex;
+justify-content: center;
+margin: 20px 0;
+}
+
+.quote-image img {
+width: 120px;
+height: 120px;
+border-radius: 50%;
+object-fit: cover;
+border: 3px solid #007bff;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
 h2 {
 color: #333;
 margin-bottom: 20px;
@@ -107,6 +123,10 @@ transition: background-color 0.2s ease;
 .nav-buttons a:hover {
 background-color: #0056b3;
 }
+
+
+
+
 </style>
 
 <div class="container">
@@ -114,6 +134,12 @@ background-color: #0056b3;
 
 <div class="card">
 <h3><%= @lesson.source %> - <em>(<%= @lesson.language.capitalize %>)</em></h3>
+
+
+<div class="quote-image">
+    <img src="<%= @lesson.image %>" alt="Illustration de la citation" />
+</div>
+
 <p><strong>Phrase :</strong> <%= @lesson.quote %></p>
 </div>
 
@@ -151,17 +177,17 @@ const correctAnswer = "<%= j @lesson.translation.downcase %>";
 const feedback = document.getElementById('feedback');
 
 if (!userAnswer) {
-    feedback.textContent = "Merci d’entrer une réponse.";
-    feedback.style.color = "orange";
-    return;
+feedback.textContent = "Merci d’entrer une réponse.";
+feedback.style.color = "orange";
+return;
 }
 
 if (userAnswer === correctAnswer) {
-    feedback.textContent = " Bravo, c’est la bonne réponse !";
-    feedback.style.color = "green";
+feedback.textContent = " Bravo, c’est la bonne réponse !";
+feedback.style.color = "green";
 } else {
-    feedback.textContent = ` Oups, la bonne réponse est : "${correctAnswer}"`;
-    feedback.style.color = "red";
+feedback.textContent = ` Oups, la bonne réponse est : "${correctAnswer}"`;
+feedback.style.color = "red";
 }
 });
 </script>

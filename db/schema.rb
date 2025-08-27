@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_26_193031) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_27_075839) do
   create_table "blagues", force: :cascade do |t|
     t.string "nom"
     t.string "contenu"
@@ -27,5 +27,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_26_193031) do
     t.text "explanation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 end
