@@ -1,1 +1,105 @@
-<div>Hello, Modifier  :</div>
+<style>
+
+body {
+font-family: Arial, sans-serif;
+    background-color: #5e6fa3;
+margin: 0;
+padding: 0;
+}
+
+form {
+max-width: 490px;
+margin: 50px auto;
+background: #fafafa;
+padding: 35px 35px;
+border-radius: 10px;
+box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: #444;
+}
+h2 {
+text-align: center;
+margin-bottom: 30px;
+color: #333;
+font-weight: 700;
+}
+
+form p {
+margin-bottom: 18px;
+text-align: left;
+}
+
+label {
+display: block;
+margin-bottom: 5px;
+font-weight: 600;
+color: #555;
+letter-spacing: 0.03em;
+}
+
+input[type="text"],
+textarea {
+width: 100%;
+padding: 12px 15px;
+border: 2px solid #ddd;
+border-radius: 8px;
+font-size: 1em;
+transition: border-color 0.25s ease;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+border-color: #6a9fb5;
+outline: none;
+box-shadow: 0 0 6px #a8c0d9;
+}
+
+textarea {
+min-height: 120px;
+resize: vertical;
+}
+
+input[type="submit"] {
+display: block;
+width: 100%;
+padding: 14px 0;
+background: linear-gradient(135deg, #6a9fb5, #a8c0d9);
+border: none;
+border-radius: 8px;
+color: white;
+font-weight: 700;
+font-size: 1.1em;
+letter-spacing: 0.05em;
+cursor: pointer;
+transition: background 0.3s ease;
+margin-top: 15px;
+}
+
+input[type="submit"]:hover {
+background: linear-gradient(135deg, #587f99, #8aa2bb);
+}
+</style>
+
+<h2>Modifier la blague</h2>
+
+<%= form_with model: @blague, local: true do |form| %>
+<p>
+<%= form.label :nom %>
+<%= form.text_field :nom %>
+</p>
+
+<p>
+<%= form.label :contenu %>
+<%= form.text_area :contenu %>
+</p>
+
+<p>
+<%= form.label :auteur %>
+<%= form.text_field :auteur %>
+</p>
+
+<p>
+<%= form.submit 'Modifier la blague' %>
+</p>
+<% end %>

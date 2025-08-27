@@ -1,92 +1,92 @@
 <style>
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f4f8;
-    margin: 0;
-    padding: 0;
-  }
-  .container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    text-align: center;
-    font-family: Arial, sans-serif;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #5e6fa3;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
 
-  h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #333;
-  }
+h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
 
-  .btn-create {
-    display: inline-block;
-    margin-bottom: 30px;
-    padding: 10px 20px;
-    background: #28a745;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-  }
+.btn-create {
+  display: inline-block;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  background: #28a745;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
 
-  .btn-create:hover {
-    background: #218838;
-  }
+.btn-create:hover {
+  background: #218838;
+}
 
-  .blague {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    text-align: left;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  }
+.blague {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: left;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
 
-  .blague strong {
-    font-size: 1.2em;
-    color: #222;
-  }
+.blague strong {
+  font-size: 1.2em;
+  color: #222;
+}
 
-  .blague em {
-    color: #666;
-  }
+.blague em {
+  color: #666;
+}
 
-  .blague .actions {
-    margin-top: 10px;
-  }
+.blague .actions {
+  margin-top: 10px;
+}
 
-  .blague .actions a {
-    display: inline-block;
-    margin-right: 10px;
-    padding: 6px 12px;
-    background: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 0.9em;
-  }
+.blague .actions a {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 6px 12px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
 
-  .blague .actions a:hover {
-    background: #0056b3;
-  }
+.blague .actions a:hover {
+  background: #0056b3;
+}
 </style>
 
 <div class="container">
-  <h2>🤣 Liste des blagues</h2>
+<h2>🤣 Liste des blagues</h2>
 
-  <%= link_to "Publier une nouvelle blague", new_blague_path, class: "btn-create" %>
+<%= link_to "Publier une nouvelle blague", new_blague_path, class: "btn-create" %>
 
-  <% @blague.each do |blague| %>
-    <div class="blague">
-      <p><strong><%= blague.nom %></strong></p>
-      <p><em>- <%= blague.auteur %></em></p>
-      <div class="actions">
-        <%= link_to 'Voir', blague_path(blague) %>
-        <%= link_to 'Éditer', edit_blague_path(blague) %>
-      </div>
+<% @blagues.each do |blague| %>
+  <div class="blague">
+    <p><strong><%= blague.nom %></strong></p>
+    <p><em>- <%= blague.auteur %></em></p>
+    <div class="actions">
+      <%= link_to 'Voir', blague_path(blague) %>
+      <%= link_to 'Éditer', edit_blague_path(blague) %>
     </div>
-  <% end %>
+  </div>
+<% end %>
 </div>
